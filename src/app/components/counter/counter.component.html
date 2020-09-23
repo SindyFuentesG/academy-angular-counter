@@ -1,0 +1,23 @@
+<p *ngIf="!counterParent">Empty</p>
+<p appBgColorStyle *ngIf="counterParent">
+  This is the counter: {{ counterParent }}
+</p>
+<div [ngStyle]="{ display: 'inline-block', 'margin-right': '10px' }">
+  <h2>Current Value</h2>
+  <ul *ngFor="let current of counterHistory">
+    <li [ngStyle]="{ 'list-style': 'none' }">
+      {{ current.currentValue }}
+    </li>
+  </ul>
+</div>
+<div [ngStyle]="{ display: 'inline-block' }">
+  <h2>Previous Value</h2>
+  <ul *ngFor="let current of counterHistory">
+    <li *ngIf="current.previousValue" [ngStyle]="{ 'list-style': 'none' }">
+      {{ current.previousValue }}
+    </li>
+    <li *ngIf="!current.previousValue" [ngStyle]="{ 'list-style': 'none' }">
+      0
+    </li>
+  </ul>
+</div>
